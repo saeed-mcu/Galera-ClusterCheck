@@ -19,6 +19,10 @@ Below is a sample configuration for HAProxy on the client. The point of this is 
 MySQL connectivity is checked via HTTP on port 9200. The clustercheck script is a simple shell script which accepts HTTP requests and checks MySQL on an incoming request. If the Galera Cluster node is ready to accept requests, it will respond with HTTP code 200 (OK), otherwise a HTTP error 503 (Service Unavailable) is returned.
 
 ## Setup with xinetd ##
+Install xinetd
+```
+sudo apt-get install xinetd
+```
 This setup will create a process that listens on TCP port 9200 using xinetd. This process uses the clustercheck script from this repository to report the status of the node.
 
 First, create a clustercheckuser that will be doing the checks.
